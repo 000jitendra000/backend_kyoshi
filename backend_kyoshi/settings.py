@@ -66,16 +66,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'backend_kyoshi.wsgi.application'
 
-# Database (MySQL)
+import dj_database_url
+import os
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'backend_kyoshi',
-        'USER': 'root',
-        'PASSWORD': 'Jitendra@123',
-        'HOST': 'localhost',
-        'PORT': '3306',
-    }
+    'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_URL')
+    )
 }
 
 # Password validation
